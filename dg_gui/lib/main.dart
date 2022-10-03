@@ -7,6 +7,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 //import 'package:dg_bip39/dg_bip39.dart';
 import 'package:dg_tool/dg_tool.dart';
 
+import 'document.dart';
+
 // initializing riverpod is not great.
 // https://stackoverflow.com/questions/65968725/
 // https://github.com/rrousselGit/riverpod/issues/57
@@ -69,63 +71,3 @@ class _MainViewState extends State<MainView> {
     return DgTool(child: DocumentView());
   }
 }
-
-class DocumentView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CustomScrollView(slivers: [
-      CupertinoSliverNavigationBar(
-        largeTitle: Text("Ironshop ${context.url}"),
-      ),
-      SliverToBoxAdapter(
-          child: Column(children: [
-        // list the branches we have access to, start with welcome
-        for (var i = 0; i < 100; i++)
-          CupertinoListTile(title: Text("branch $i"))
-      ]))
-    ]);
-  }
-}
-
-    /* work around for Text() defaulting black
-        return MediaQuery.fromWindow(
-  child: CupertinoApp(
-    useInheritedMediaQuery: true,
-    home: // ...
-  )
-);*/
-/*
-       leading: [
-          CupertinoButton(
-              child: const Icon(CupertinoIcons.folder),
-              onPressed: () {
-                context.url = "/folder";
-              }),
-          CupertinoButton(
-              child: const Icon(CupertinoIcons.search),
-              onPressed: () {
-                context.url = "/search";
-              }),
-          CupertinoButton(
-              child: const Icon(CupertinoIcons.gear),
-              onPressed: () {
-                context.url = "/settings";
-              }),
-          CupertinoButton(
-              child: const Icon(CupertinoIcons.ellipsis_vertical),
-              onPressed: () {
-                // probably modal dialogs
-              })
-        ],
-        child: CustomScrollView(slivers: [
-          CupertinoSliverNavigationBar(
-            largeTitle: Text("Ironshop ${context.url}"),
-          ),
-          SliverToBoxAdapter(
-              child: Column(children: [
-            // list the branches we have access to, start with welcome
-            for (var i = 0; i < 100; i++)
-              CupertinoListTile(title: Text("branch $i"))
-          ]))
-        ])); 
-        */

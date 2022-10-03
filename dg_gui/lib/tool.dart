@@ -5,6 +5,16 @@ Future<ToolSet> initialTools() async {
   return ToolSet(
     tool: [
       Tool(
+        id: "browse",
+        icon: const Icon(CupertinoIcons.folder),
+        buildModal: (c) {
+          return BottomModal(child: BrowsePane());
+        },
+        builder: (c) {
+          return BrowsePane();
+        },
+      ),
+      Tool(
         id: "search",
         icon: const Icon(CupertinoIcons.search),
         buildModal: (c) {
@@ -14,16 +24,6 @@ Future<ToolSet> initialTools() async {
           return SearchPane();
         },
       ),
-      Tool(
-        id: "browse",
-        icon: const Icon(CupertinoIcons.folder),
-        buildModal: (c) {
-          return BottomModal(child: BrowsePane());
-        },
-        builder: (c) {
-          return BrowsePane();
-        },
-      )
     ],
     active: 0,
     bottomCount: 1,
