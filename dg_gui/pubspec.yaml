@@ -47,6 +47,7 @@ dependencies:
     path: "../dg_prosemirror"
   riverpod: ^2.0.1
   flutter_riverpod: ^2.0.1
+  desktop_drop: ^0.3.3
 
 dev_dependencies:
   flutter_test:
