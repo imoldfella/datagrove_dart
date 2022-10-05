@@ -1,3 +1,7 @@
+this should move to a dart libaray
+
+we need this to run without flutter
+
 The dart way of creating value controllers is problematic for deltas? It's a bit of a waste to keep diffing when we already know the differences.
 
 Althought we might not know the differences in all cases due to race conditions? but in dart we can't really race on the gui thread, because there is only one thread. Still differencing is super useful, even if not quite necessary across isolates.

@@ -10,9 +10,16 @@ import 'package:flutter/cupertino.dart';
 import 'dart:html' as html;
 import 'dart:ui' as ui;
 
-export 'web/prosemirror.dart';
-export 'web/codemirror.dart';
-export 'web/editor_list.dart';
+// general
 export 'web/div.dart';
-export 'web/chat.dart';
 export 'web/html.dart';
+
+// edit
+export 'edit/prosemirror.dart';
+export 'edit/codemirror.dart';
+
+// list
+export 'list/chat.dart';
+export 'list/editor_list.dart';
+
+// for grid.

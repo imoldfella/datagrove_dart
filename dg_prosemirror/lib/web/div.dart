@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'dart:html' as html;
 import 'dart:ui' as ui;
 
-import 'editor_list.dart';
+import '../list/editor_list.dart';
 
 // model a list of 1+ divs.
 

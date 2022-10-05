@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import 'div.dart';
+import '../web/div.dart';
 import 'editor_list.dart';
 
 

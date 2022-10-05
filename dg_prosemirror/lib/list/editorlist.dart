@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import 'editor.dart';
+import '../edit/editor.dart';
 
 class EditorListController extends ChangeNotifier {
   int length = 0; // virtual

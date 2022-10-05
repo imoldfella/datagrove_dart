@@ -4,13 +4,16 @@ import 'dart:typed_data';
 import 'dart:html' as html;
 import 'dart:ui' as ui;
 
-import 'div.dart';
+import '../web/div.dart';
 import 'package:js/js.dart';
 
 // since this is designed for small pieces of text we
 
 // EditorContent should indicate the editor that should format and attach handlers to
 // the input. Maybe like a channel to one item in the list.
+
+// how do we make a publishable list controller?
+
 class ListController extends ChangeNotifier {
   int length = 0; // virtual
 

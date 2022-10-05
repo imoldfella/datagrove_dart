@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:js/js.dart';
-import 'div.dart';
+import '../web/div.dart';
 import 'dart:html' as html;
 
 class ProsemirrorController {

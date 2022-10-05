@@ -48,6 +48,7 @@ dependencies:
   riverpod: ^2.0.1
   flutter_riverpod: ^2.0.1
   desktop_drop: ^0.3.3
+  pull_down_button: ^0.3.0
 
 dev_dependencies:
   flutter_test:

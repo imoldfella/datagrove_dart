@@ -30,8 +30,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  pm.ProsemirrorController controller = pm.ProsemirrorController(text: "");
-
+  pm.ListController listController = pm.ListController(
+    itemCount: 10,
+    load: (int index) async => pm.HtmlContent(text: "<p>Item $index</p>"),
+  );
+  pm.ProsemirrorController inputController =
+      pm.ProsemirrorController(text: "hello, world");
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -44,8 +48,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   await alert(context, "yo!");
                 })),
         child: SafeArea(
-            child: pm.Prosemirror(
-          controller: controller,
+            child: Column(
+          children: [
+            Expanded(child: pm.EditorListView(controller: listController)),
+            SizedBox(
+                height: 64,
+                child: Container(
+                    color: CupertinoColors.darkBackgroundGray,
+                    child: Row(children: [
+                      CupertinoButton(
+                          onPressed: () {}, child: Icon(CupertinoIcons.add)),
+                      Expanded(
+                          child:
+                              pm.ProsemirrorField(controller: inputController)),
+                      CupertinoButton(
+                          onPressed: () {},
+                          child: Icon(CupertinoIcons.arrow_up_circle_fill))
+                    ])))
+          ],
         )));
   }
 }
