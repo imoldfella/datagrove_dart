@@ -1,0 +1,55 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+// proxy to web browser potentially in another thread.
+// global
+
+// does it make sense to send the entire dom each time? we could diff inside the dart code consistently, then patch the dom.
+
+import 'dart:html';
+
+// essence doesn't have events, fork then?
+// 
+
+abstract class Render {
+  Pane createPane();
+}
+
+Render? browser;
+
+// pane is a partial dom to allow us to capture a bit for an encapsulating widget
+
+abstract class Pane {
+  Stream<Eventv> event;
+  Pane({
+    required this.event,
+  });
+  render(Domv dom);
+}
+
+class Domv {
+  
+}
+
+class Eventv {}
+
+// shimmed
+openBrowser() {
+  browser = RenderWeb();
+}
+
+class RenderWeb with Render {
+  @override
+  Pane createPane() {
+    return PaneWeb();
+  }
+}
+
+class PaneWeb extends Pane {
+  late DivElement div;
+
+  PaneWeb({required super.event});
+  
+  @override
+  render(Domv dom) {
+    // here we have direct access to the dom, so apply changes directly.
+  }
+}

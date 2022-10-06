@@ -5,32 +5,52 @@
 // object identity won't work across isolates/workers.
 
 import 'dart:html';
+import '../foundation/foundation.dart';
 
-class Materialized {}
-
-class DataSource {
-  // we could give the entire tree and let the app diff?
-  late Materialized value_;
-  DataSource({required Materialized value}) {
-    value_ = value;
-  }
-
-  notifyListeners() {}
-  set value(Materialized view) {
-    notifyListeners();
-  }
-
-  Materialized get value => value_;
-
-  void addListener(Function() notify) {}
+// could be column with vertical scripts.
+class RowList<T> {
+  List<int> key;
+  List<T> value;
+  RowList(this.key, this.value);
 }
 
-class Column {
+class Materialized<T> {
+  int length = 0;
+  RowList<T> slice(int start, int end) {
+    return RowList([], []);
+  }
+}
+
+typedef DataSource = DartValueNotifier<Materialized<Row>>;
+typedef Row = List<Cell>;
+
+class HtmlList {
+  DataSource source;
+  Materialized previous = Materialized();
+
+  HtmlList({required this.source});
+
+  int itemCount = 0;
+  double runwayStart = 0;
+  int itemStart = 0;
+  List<DivElement> row = [];
+  Function(double x)? onscroll;
+
+  int anchor = 0;
+  double anchorOffset = 0;
+
+  // we only care about the items on our runway.
+  // the anchor is the top visible item.
+
+  diff() {
+    previous = source.value;
+  }
+}
+
+class RowFormat {
   int version = 0;
   double? size;
 }
-
-typedef Row = Column;
 
 class Cell {
   int version = 0;
@@ -84,29 +104,6 @@ class GridDelta {
 // insert, delete, update.
 // ho
 class ListDelta {}
-
-class HtmlList {
-  DataSource source;
-  Materialized previous = Materialized();
-
-  HtmlList({required this.source});
-
-  int itemCount = 0;
-  double runwayStart = 0;
-  int itemStart = 0;
-  List<DivElement> row = [];
-  Function(double x)? onscroll;
-
-  int anchor = 0;
-  double anchorOffset = 0;
-
-  // we only care about the items on our runway.
-  // the anchor is the top visible item.
-
-  diff() {
-    previous = source.value;
-  }
-}
 
 class ListController {
   commit(ListTx) {}

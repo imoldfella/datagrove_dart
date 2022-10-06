@@ -4,6 +4,7 @@ import 'package:js/js.dart';
 import '../web/div.dart';
 import 'dart:html' as html;
 
+// this should be a value notifier, should it be Dart or Flutter?
 class ProsemirrorController {
   EditorContent? content;
   String text;
